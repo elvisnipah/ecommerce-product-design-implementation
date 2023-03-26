@@ -126,7 +126,7 @@ function ImageSlider(props) {
       </button>
       <section
         style={slideStyles}
-        className="lg:rounded-2xl lg:max-h-[500px] lg:min-h-[400px] cursor-pointer"
+        className="lg:rounded-2xl lg:max-h-[500px] lg:min-h-[400px] lg:cursor-pointer"
         onClick={props.showModalSlider}
       ></section>
       <button

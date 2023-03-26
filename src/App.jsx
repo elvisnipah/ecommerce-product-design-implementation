@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar";
 import CartDisplay from "./components/cart/CartDisplay";
 import ImageSlider from "./components/ImageSlider";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -57,9 +57,25 @@ function App() {
     });
   };
 
+  const [windowSize, setWindowSize] = useState([window.innerWidth]);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize([window.innerWidth]);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
+
   const showModalSlider = () => {
-    setModalVisible(true);
-    setSliderVisible(true);
+    if (windowSize >= 1024) {
+      setModalVisible(true);
+      setSliderVisible(true);
+    }
   };
 
   return (
